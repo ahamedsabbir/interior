@@ -24,8 +24,8 @@ class SliderController extends Controller
 		if($request->submit == "insert"){
 			$request->validate(
 				[
-					'name' => 'required|unique:categories,name|string|max:225', 
-					'title' => 'required|unique:categories,title',
+					'name' => 'required|string|max:100', 
+					'title' => 'required|max:225',
 					'icon' => 'file|mimes:jpg,bmp,png'
 				],
 			);

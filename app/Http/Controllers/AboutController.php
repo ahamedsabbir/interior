@@ -10,6 +10,7 @@ class AboutController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+		$this->middleware('rolecheck');
     }
 	public function update_page(){
 		return view('starlight/about/update', [
