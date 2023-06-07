@@ -7,7 +7,20 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ APP\Models\Settings::find(1)->name }}</title>
+	<meta name="description" content="{{ APP\Models\Settings::find(1)->description }}">
+	<meta name="author" content="{{ APP\Models\Settings::find(1)->author }}">
+	<meta name="keywords" content="{{ APP\Models\Settings::find(1)->keywords }}">
+	<link rel="icon" href="{{ asset('/storage/'.APP\Models\Settings::find(1)->icon) }}" />
+	
+	<!--facebook instragram -->
+	<meta property="og:title" content="{{ APP\Models\Settings::find(1)->name }}" />
+	<meta property="og:description" content="{{ APP\Models\Settings::find(1)->description }}" />
+	<meta property="og:image" content="{{ asset('/storage/'.APP\Models\Settings::find(1)->icon) }}"/>
+	
+	<!--twitter -->
+	<meta name="twitter:title" content="{{ APP\Models\Settings::find(1)->name }}" />
+	<meta name="twitter:image" content="{{ asset('/storage/'.APP\Models\Settings::find(1)->icon) }}" />
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">

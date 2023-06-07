@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Gallery;
+use App\Models\Customer;
+use App\Models\Category;
+use App\Models\Slider;
+use App\Models\About;
+use App\Models\Settings;
+
+
 
 class HomeController extends Controller
 {
@@ -13,7 +21,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        
     }
 
     /**
@@ -21,8 +29,24 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('klift/index');
+    public function index(){
+        return view('klift/index', [
+			"gallery" => Gallery::all(),
+			"slider" => Slider::all(),
+			"category" => Category::all(),
+			"customer" => Customer::all(),
+			"about" => About::first()->get(),
+			"settings" => Settings::first()->get()
+		]);
+    }
+	public function gallery(){
+        return view('klift/gallery', [
+			'gallery' => Gallery::latest()->paginate(24, ['*'], 'galleries'),
+			"slider" => Slider::all(),
+			"category" => Category::all(),
+			"customer" => Customer::all(),
+			"about" => About::first()->get(),
+			"settings" => Settings::first()->get()
+		]);
     }
 }

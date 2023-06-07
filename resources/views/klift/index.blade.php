@@ -1,33 +1,23 @@
 @extends('klift/app')
 @section('content')
 <section class="home-slider js-fullheight owl-carousel">
-  <div class="slider-item js-fullheight" style="background-image:url(images/bg_1.jpg);">
+@foreach($slider as $slider_key => $slider_value)
+  <div class="slider-item js-fullheight" style="background-image:url('{{ asset('/storage/'.$slider_value->icon) }}');">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
       <div class="col-md-7 text ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">We Create Amazing Architecture Designs</h1>
-        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-        <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3">View our works</a></p>
+        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $slider_value->name }}</h1>
+        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $slider_value->title }}</p>
+        <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3 d-none">View our works</a></p>
       </div>
     </div>
     </div>
   </div>
-
-  <div class="slider-item js-fullheight" style="background-image:url(images/bg_2.jpg);">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
-      <div class="col-md-7 text ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Virtually Build Your House</h1>
-        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p><p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3">View our works</a></p>
-      </div>
-    </div>
-    </div>
-  </div>
+@endforeach 
 </section>
 
-<section class="ftco-services bg-light">
+<section class="ftco-services bg-light d-none">
   <div class="container">
     <div class="row">
       <div class="col-md-4 d-flex align-self-stretch ftco-animate">
@@ -67,30 +57,43 @@
   </div>
 </section>
 
+
+@foreach($about as $about_key => $about_value)
 <section class="ftco-section ftc-no-pb">
   <div class="container">
     <div class="row no-gutters">
-      <div class="col-md-5 p-md-5 img img-2" style="background-image: url(images/about.jpg);">
+      <div class="col-md-5 p-md-5 img img-2" style="background-image: url('{{ asset('/storage/'.$about_value->icon) }}');">
       </div>
       <div class="col-md-7 wrap-about pb-md-5 ftco-animate">
         <div class="heading-section mb-5 pl-md-5 heading-section-with-line">
           <div class="pl-md-5 ml-md-5">
-            <span class="subheading">About</span>
-            <h2 class="mb-4">We are the best interior &amp; Architect Consultant in Italy</h2>
+            <span class="subheading">{{ $about_value->name }}</span>
+            <h2 class="mb-4">{{ $about_value->title }}</h2>
           </div>
         </div>
         <div class="pl-md-5 ml-md-5 mb-5">
-          <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-          <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-          <p><a href="#" class="btn-custom">Learn More <span class="ion-ios-arrow-forward"></span></a></p>
+          {{ $about_value->description }}
         </div>
       </div>
     </div>
   </div>
 </section>
+@endforeach
 
 
-<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+<section class="ftco-section ftco-counter">
+  <div class="">
+    <div class="row">
+      <div class="col-md-12">
+		<img src="{{ asset('/storage/'.APP\Models\Settings::find(1)->add_one) }}" style="width:100%;"/>
+	  </div>
+	</div>
+  </div>
+</section>
+
+
+
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({{ asset('klift/images/bg_3.jpg') }});" data-stellar-background-ratio="0.5">
   <div class="container">
     <div class="row d-md-flex align-items-center justify-content-center">
       <div class="col-lg-4">
@@ -104,9 +107,9 @@
       <div class="col-lg-8">
         <div class="row d-md-flex align-items-center">
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 text-center">
+            <div class="block-5 text-center">
               <div class="text">
-                <strong class="number" data-number="18">0</strong>
+                <strong class="number" data-number="5">0</strong>
                 <span>Years of Experienced</span>
               </div>
             </div>
@@ -152,51 +155,30 @@
   </div>
   <div class="container-wrap">
     <div class="row no-gutters">
-      <div class="col-md-6 col-lg-3 ftco-animate">
+	@foreach($category as $category_key => $category_value)    
+	  <div class="col-md-6 col-lg-3 ftco-animate">
         <div class="project">
-          <img src="images/work-1.jpg" class="img-fluid" alt="Colorlib Template">
+          <img src="{{ asset('/storage/'.$category_value->icon) }}" class="img-fluid" alt="Colorlib Template">
           <div class="text">
-            <h3>Office Interior Design in Paris</h3>
+            <h3>{{ $category_value->title }}</h3>
           </div>
-          <a href="images/work-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+          <a href="{{ asset('/storage/'.$category_value->icon) }}" class="icon image-popup d-flex justify-content-center align-items-center">
             <span class="icon-expand"></span>
           </a>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="project">
-          <img src="images/work-2.jpg" class="img-fluid" alt="Colorlib Template">
-          <div class="text">
-            <h3>Office Interior Design in Paris</h3>
-          </div>
-          <a href="images/work-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-            <span class="icon-expand"></span>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="project">
-          <img src="images/work-3.jpg" class="img-fluid" alt="Colorlib Template">
-          <div class="text">
-            <h3>Office Interior Design in Paris</h3>
-          </div>
-          <a href="images/work-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-            <span class="icon-expand"></span>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="project">
-          <img src="images/work-4.jpg" class="img-fluid" alt="Colorlib Template">
-          <div class="text">
-            <h3>Office Interior Design in Paris</h3>
-          </div>
-          <a href="images/work-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-            <span class="icon-expand"></span>
-          </a>
-        </div>
-      </div>
+	  @endforeach
     </div>
+  </div>
+</section>
+
+<section class="ftco-section ftco-counter">
+  <div class="">
+    <div class="row">
+      <div class="col-md-12">
+		<img src="{{ asset('/storage/'.APP\Models\Settings::find(1)->add_two) }}" style="width:100%;"/>
+	  </div>
+	</div>
   </div>
 </section>
 
@@ -211,83 +193,29 @@
     <div class="row ftco-animate">
       <div class="col-md-12">
         <div class="carousel-testimony owl-carousel">
+		  @foreach($customer as $customer_key => $customer_value)
           <div class="item">
             <div class="testimony-wrap p-4 pb-5">
-              <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+              <div class="user-img mb-5" style="background-image: url({{ asset('/storage/'.$customer_value->photo) }})">
                 <span class="quote d-flex align-items-center justify-content-center">
                   <i class="icon-quote-left"></i>
                 </span>
               </div>
               <div class="text">
-                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <p class="name">Garreth Smith</p>
-                <span class="position">Marketing Manager</span>
+                <p class="mb-5 pl-4 line">{{ $customer_value->description }}</p>
+                <p class="name">{{ $customer_value->name }}</p>
+                <span class="position">{{ $customer_value->title }}</span>
               </div>
             </div>
           </div>
-          <div class="item">
-            <div class="testimony-wrap p-4 pb-5">
-              <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
-                <span class="quote d-flex align-items-center justify-content-center">
-                  <i class="icon-quote-left"></i>
-                </span>
-              </div>
-              <div class="text">
-                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <p class="name">Garreth Smith</p>
-                <span class="position">Interface Designer</span>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="testimony-wrap p-4 pb-5">
-              <div class="user-img mb-5" style="background-image: url(images/person_3.jpg)">
-                <span class="quote d-flex align-items-center justify-content-center">
-                  <i class="icon-quote-left"></i>
-                </span>
-              </div>
-              <div class="text">
-                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <p class="name">Garreth Smith</p>
-                <span class="position">UI Designer</span>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="testimony-wrap p-4 pb-5">
-              <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                <span class="quote d-flex align-items-center justify-content-center">
-                  <i class="icon-quote-left"></i>
-                </span>
-              </div>
-              <div class="text">
-                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <p class="name">Garreth Smith</p>
-                <span class="position">Web Developer</span>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="testimony-wrap p-4 pb-5">
-              <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                <span class="quote d-flex align-items-center justify-content-center">
-                  <i class="icon-quote-left"></i>
-                </span>
-              </div>
-              <div class="text">
-                <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                <p class="name">Garreth Smith</p>
-                <span class="position">System Analyst</span>
-              </div>
-            </div>
-          </div>
+		  @endforeach
         </div>
       </div>
     </div>
   </div>
 </section>
   
-<section class="ftco-section">
+<section class="ftco-section d-none">
   <div class="container">
     <div class="row justify-content-center mb-5 pb-3">
       <div class="col-md-7 heading-section ftco-animate">
@@ -298,7 +226,7 @@
     <div class="row">
       <div class="col-md-6 col-lg-3 ftco-animate">
         <div class="staff">
-          <div class="img" style="background-image: url(images/staff-1.jpg);"></div>
+          <div class="img" style="background-image: url({{ asset('klift/images/staff-1.jpg') }});"></div>
           <div class="text pt-4">
             <h3>David Smith</h3>
             <span class="position mb-2">Achitect</span>
@@ -314,7 +242,7 @@
       </div>
       <div class="col-md-6 col-lg-3 ftco-animate">
         <div class="staff">
-          <div class="img" style="background-image: url(images/staff-2.jpg);"></div>
+          <div class="img" style="background-image: url({{ asset('klift/images/staff-2.jpg') }});"></div>
           <div class="text pt-4">
             <h3>David Smith</h3>
             <span class="position mb-2">Achitect</span>
@@ -330,7 +258,7 @@
       </div>
       <div class="col-md-6 col-lg-3 ftco-animate">
         <div class="staff">
-          <div class="img" style="background-image: url(images/staff-3.jpg);"></div>
+          <div class="img" style="background-image: url({{ asset('klift/images/staff-3.jpg') }});"></div>
           <div class="text pt-4">
             <h3>David Smith</h3>
             <span class="position mb-2">Achitect</span>
@@ -346,7 +274,7 @@
       </div>
       <div class="col-md-6 col-lg-3 ftco-animate">
         <div class="staff">
-          <div class="img" style="background-image: url(images/staff-4.jpg);"></div>
+          <div class="img" style="background-image: url({{ asset('klift/images/staff-4.jpg') }});"></div>
           <div class="text pt-4">
             <h3>David Smith</h3>
             <span class="position mb-2">Achitect</span>
@@ -364,7 +292,7 @@
   </div>
 </section>
 
-<section class="ftco-section">
+<section class="ftco-section d-none">
   <div class="container">
     <div class="row justify-content-center mb-5 pb-3">
       <div class="col-md-7 heading-section ftco-animate">
@@ -375,7 +303,7 @@
     <div class="row">
       <div class="col-md-4 ftco-animate">
         <div class="blog-entry">
-          <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+          <a href="blog-single.html" class="block-20" style="background-image: url('{{ asset('klift/images/image_1.jpg') }}');">
           </a>
           <div class="text d-flex py-4">
             <div class="meta mb-3">
@@ -391,7 +319,7 @@
       </div>
       <div class="col-md-4 ftco-animate">
         <div class="blog-entry" data-aos-delay="100">
-          <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+          <a href="blog-single.html" class="block-20" style="background-image: url('{{ asset('klift/images/image_2.jpg') }}');">
           </a>
           <div class="text d-flex py-4">
             <div class="meta mb-3">
@@ -407,7 +335,7 @@
       </div>
       <div class="col-md-4 ftco-animate">
         <div class="blog-entry" data-aos-delay="200">
-          <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+          <a href="blog-single.html" class="block-20" style="background-image: url('{{ asset('klift/images/image_3.jpg') }}');">
           </a>
           <div class="text d-flex py-4">
             <div class="meta mb-3">
@@ -425,10 +353,10 @@
   </div>
 </section>
 
-<section class="ftco-section ftc-no-pb">
+<section class="ftco-section ftc-no-pb d-none">
   <div class="container">
     <div class="row no-gutters">
-      <div class="col-md-5 p-md-5 img img-2 order-md-last" style="background-image: url(images/img.jpg);">
+      <div class="col-md-5 p-md-5 img img-2 order-md-last" style="background-image: url({{ asset('klift/images/img.jpg') }});">
       </div>
       <div class="col-md-7 wrap-about pb-md-5 ftco-animate">
         <div class="heading-section mb-md-5 pl-md-5 heading-section-with-line">
@@ -446,4 +374,15 @@
     </div>
   </div>
 </section>
+
+<section class="ftco-section ftco-counter">
+  <div class="">
+    <div class="row">
+      <div class="col-md-12">
+		<img src="{{ asset('/storage/'.APP\Models\Settings::find(1)->add_three) }}" style="width:100%;"/>
+	  </div>
+	</div>
+  </div>
+</section>
+
 @endsection
