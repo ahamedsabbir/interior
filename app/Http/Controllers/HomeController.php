@@ -49,4 +49,13 @@ class HomeController extends Controller
 			"settings" => Settings::first()->get()
 		]);
     }
+	public function search(){
+		$keyword = $_POST['keyword'];
+		return view('klift/gallery', [
+			"gallery" => Gallery::where("title", "like", "%$keyword%")->paginate(24, ['*'], 'galleries'),
+			"slider" => Slider::all(),
+			"category" => Category::all(),
+			"settings" => Settings::first()->get()
+		]);
+	}
 }

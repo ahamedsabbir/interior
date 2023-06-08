@@ -18,6 +18,11 @@
 	@endauth
 @endif
 </ul>
+			<form class="form-inline my-2 my-lg-0" action="{{ url('gallery/search/') }}" method="post">
+				@csrf
+				<input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit">Search</button>
+			</form>
         </div>
     </div>
 </nav>

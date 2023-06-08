@@ -117,7 +117,7 @@
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18 text-center">
               <div class="text">
-                <strong class="number" data-number="351">0</strong>
+                <strong class="number" data-number="215">0</strong>
                 <span>Happy Clients</span>
               </div>
             </div>
@@ -125,16 +125,8 @@
           <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
             <div class="block-18 text-center">
               <div class="text">
-                <strong class="number" data-number="564">0</strong>
+                <strong class="number" data-number="228">0</strong>
                 <span>Finished Projects</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 text-center">
-              <div class="text">
-                <strong class="number" data-number="300">0</strong>
-                <span>Working Days</span>
               </div>
             </div>
           </div>
