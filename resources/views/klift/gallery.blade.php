@@ -33,12 +33,12 @@
 				  </a>
 				  <div class="text d-flex py-4">
 					<div class="meta mb-3">
-					  <div><a href="#">{{ naturalDate($gallery_value->created_at) }}</a></div>
-					  <div><a href="#">{{ App\Models\Category::find($gallery_value->category)->name }}</a></div>
+					  <div><a href="{{ url('gallery/category/'.$gallery_value->category) }}">{{ naturalDate($gallery_value->created_at) }}</a></div>
+					  <div><a href="{{ url('gallery/category/'.$gallery_value->category) }}">{{ App\Models\Category::find($gallery_value->category)->name }}</a></div>
 					</div>
 					<div class="desc pl-3">
-						<h3 class="heading"><a href="#">{{ $gallery_value->title }}</a></h3>
-					  </div>
+						<h3 class="heading"><a href="{{ url('gallery/category/'.$gallery_value->category) }}">{{ $gallery_value->title }}</a></h3>
+					</div>
 				  </div>
 				</div>
 			  </div>

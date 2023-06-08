@@ -58,4 +58,12 @@ class HomeController extends Controller
 			"settings" => Settings::first()->get()
 		]);
 	}
+	public function category($id){
+		return view('klift/gallery', [
+			"gallery" => Gallery::where("category", $id)->paginate(24, ['*'], 'galleries'),
+			"slider" => Slider::all(),
+			"category" => Category::all(),
+			"settings" => Settings::first()->get()
+		]);
+	}
 }

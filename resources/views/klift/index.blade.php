@@ -155,9 +155,12 @@
             <h3>{{ $category_value->title }}</h3>
           </div>
           <a href="{{ asset('/storage/'.$category_value->icon) }}" class="icon image-popup d-flex justify-content-center align-items-center">
-            <span class="icon-expand"></span>
+            <span class=""><small style="">Open</small></span>
           </a>
         </div>
+		  <div class="text-center py-2" style="background-color:#FFCDCD;">
+			<a style="color:white;" href="{{ url('gallery/category/'.$category_value->id) }}">{{ $category_value->title }}</a>
+		  </div>
       </div>
 	  @endforeach
     </div>
