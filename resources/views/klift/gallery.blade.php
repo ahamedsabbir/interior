@@ -1,8 +1,8 @@
 @extends('klift/app')
 @section('content')
-	<section class="home-slider js-fullheight owl-carousel">
+	<section class="home-slider js-fullheight owl-carousel d-sm-none d-md-block">
 	@foreach($slider as $slider_key => $slider_value)
-	  <div class="slider-item js-fullheight" style="background-image:url('{{ asset('/storage/'.$slider_value->icon) }}');">
+	  <div class="slider-item js-fullheight" style="background-image:url('{{ asset('/klift/uploads/'.$slider_value->icon) }}');">
 		<div class="overlay"></div>
 		<div class="container">
 		  <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
@@ -29,7 +29,7 @@
 			@foreach($gallery as $gallery_key => $gallery_value)
 			  <div class="col-md-4 ftco-animate">
 				<div class="blog-entry">
-				  <a href="{{ asset('/storage/'.$gallery_value->photo) }}" class="block-20" style="background-image: url('{{ asset('/storage/'.$gallery_value->photo) }}');">
+				  <a href="{{ asset('/klift/uploads/'.$gallery_value->photo) }}" class="block-20" style="background-image: url('{{ asset('/klift/uploads/'.$gallery_value->photo) }}');">
 				  </a>
 				  <div class="text d-flex py-4">
 					<div class="meta mb-3">

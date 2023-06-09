@@ -3,20 +3,33 @@ function naturalDate($date){
 	$date1 = strtr($date, '/', '-');
 	return date('d/m/Y', strtotime($date1));
 }
-function settingsUpload($request, $data, $row){
-   if($request->file($row) != null){
+function image_insert_function($request, $data){
+	$file_temp = $request->file($data);
+	$file_name = time().rand(99999, 10000).".".$file_temp->getClientOriginalExtension();
+	Image::make($file_temp)->save(base_path("public/klift/uploads/".$file_name));
+	return $file_name;
+}
+function image_update_function($request, $data, $name){
+	if($request->file($name) != null){
 		foreach($data AS $data_value){
-			if(file_exists(public_path()."/storage/".$data_value->$row)){
-				unlink(public_path()."/storage/".$data_value->$row);
+			if(file_exists(public_path()."/klift/uploads/".$data_value->$name)){
+				unlink(public_path()."/klift/uploads/".$data_value->$name);
 			}
 		}
-		$unique = rand(9999, 0000);
-		$add_one = $request->file($row)->getClientOriginalName();
-		$add_one_save_path = $request->file($row)->storeAs('image', $unique.$add_one, 'public');
+		$file_temp = $request->file($name);
+		$file_name = time().rand(99999, 10000).".".$file_temp->getClientOriginalExtension();
+		Image::make($file_temp)->save(base_path("public/klift/uploads/".$file_name));
 	}else{
 		foreach($data AS $data_value){
-			$add_one_save_path = $data_value->$row;
+			$file_name = $data_value->$name;
 		}
 	}
-	return $add_one_save_path;
+	return $file_name;
+}
+function image_delete_function($data, $name){
+	foreach($data AS $data_value){
+		if(file_exists(public_path()."/klift/uploads/".$data_value->$name)){
+			unlink(public_path()."/klift/uploads/".$data_value->$name);
+		}
+	}
 }

@@ -31,7 +31,7 @@
 <tr>
   <td>{{$gallery_value->title}}</td>
   <td>{{ App\Models\Category::find($gallery_value->category)->name }}</td>
-  <td><img src="{{ asset('/storage/'.$gallery_value->photo) }}" style="width:20px;"/></td>
+  <td><img src="{{ asset('/klift/uploads/'.$gallery_value->photo) }}" style="width:20px;"/></td>
   <td>
 	<a href="{{ url('dashboard/gallery/edit/page/'.$gallery_value->id) }}">Edit</a>
 	<a href="{{ url('dashboard/gallery/remove/'.$gallery_value->id) }}" onclick="confirm()">Delete</a>

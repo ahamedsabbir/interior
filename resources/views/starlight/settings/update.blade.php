@@ -29,7 +29,7 @@
 					</div>
 				  </div><!-- col-8 -->
 				  <div class="col-lg-4">
-					<img src="{{ asset('/storage/'.$settings_value->icon) }}" style="width:150px;"/>
+					<img src="{{ asset('/klift/uploads/'.$settings_value->icon) }}" style="width:150px;"/>
 				  </div><!-- col-4 -->
 				</div>
 				<div class="row mg-b-25">
@@ -40,7 +40,7 @@
 					</div>
 				  </div><!-- col-8 -->
 				  <div class="col-lg-4">
-					<img src="{{ asset('/storage/'.$settings_value->add_one) }}" style="width:150px;"/>
+					<img src="{{ asset('/klift/uploads/'.$settings_value->add_one) }}" style="width:150px;"/>
 				  </div><!-- col-4 -->
 				</div>
 				<div class="row mg-b-25">
@@ -51,7 +51,7 @@
 					</div>
 				  </div><!-- col-8 -->
 				  <div class="col-lg-4">
-					<img src="{{ asset('/storage/'.$settings_value->add_two) }}" style="width:150px;"/>
+					<img src="{{ asset('/klift/uploads/'.$settings_value->add_two) }}" style="width:150px;"/>
 				  </div><!-- col-4 -->
 				</div>
 				<div class="row mg-b-25">
@@ -62,7 +62,7 @@
 					</div>
 				  </div><!-- col-8 -->
 				  <div class="col-lg-4">
-					<img src="{{ asset('/storage/'.$settings_value->add_three) }}" style="width:150px;"/>
+					<img src="{{ asset('/klift/uploads/'.$settings_value->add_three) }}" style="width:150px;"/>
 				  </div><!-- col-4 -->
 				</div>
 				<div class="row mg-b-25">
@@ -73,7 +73,7 @@
 					</div>
 				  </div><!-- col-8 -->
 				  <div class="col-lg-4">
-					<img src="{{ asset('/storage/'.$settings_value->add_four) }}" style="width:150px;"/>
+					<img src="{{ asset('/klift/uploads/'.$settings_value->add_four) }}" style="width:150px;"/>
 				  </div><!-- col-4 -->
 				</div>
 				<div class="row mg-b-25">

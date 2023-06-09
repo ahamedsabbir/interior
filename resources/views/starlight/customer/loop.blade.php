@@ -31,7 +31,7 @@
 <tr>
   <td>{{$customer_value->name}}</td>
   <td>{{$customer_value->title}}</td>
-  <td><img src="{{ asset('/storage/'.$customer_value->photo) }}" style="width:20px;"/></td>
+  <td><img src="{{ asset('/klift/uploads/'.$customer_value->photo) }}" style="width:20px;"/></td>
   <td>
 	<a href="{{ url('dashboard/customer/edit/page/'.$customer_value->id) }}">Edit</a>
 	<a href="{{ url('dashboard/customer/remove/'.$customer_value->id) }}" onclick="confirm()">Delete</a>

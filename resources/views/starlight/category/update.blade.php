@@ -31,7 +31,7 @@
 					</div>
 				  </div><!-- col-8 -->
 				  <div class="col-lg-4">
-					<img src="{{ asset('/storage/'.$category_value->icon) }}" style="width:230px;"/>
+					<img src="{{ asset('/klift/uploads/'.$category_value->icon) }}" style="width:230px;"/>
 				  </div><!-- col-4 -->
 				</div><!-- row -->
 				<div class="form-layout-footer">

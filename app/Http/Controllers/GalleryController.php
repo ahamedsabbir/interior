@@ -7,11 +7,14 @@ use Carbon\Carbon;
 use App\Models\Category;
 use App\Models\Gallery;
 use IIlluminate\Support\Facades\Storage;
+use Image;
+
 
 class GalleryController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+		$this->middleware('rolecheck');
     }
 	public function insert_page(){
 		return view('starlight/gallery/insert', [
@@ -27,13 +30,10 @@ class GalleryController extends Controller
 					'photo' => 'file|mimes:jpg,bmp,png'
 				],
 			);
-			$unique = rand(9999, 0000);
-			$photo_name = $request->file('photo')->getClientOriginalName();
-			$photo_save_path = $request->file('photo')->storeAs('image', $unique.$photo_name, 'public');
 			Gallery::insert([
 				"title" => $request->title,
 				"category" => $request->category,
-				"photo" => $photo_save_path,
+				"photo" => image_insert_function($request, 'photo'),,
 				"created_at" => Carbon::now()
 			]);
 			return redirect('dashboard/gallery/loop')->with('success', 'gallery add success');
@@ -53,24 +53,10 @@ class GalleryController extends Controller
 		]);
     }
 	public function update_function(Request $request, $id){
-		if($request->file('photo') != null){
-			foreach(Gallery::where('id', $id)->get() AS $gallery){
-				if(file_exists(public_path()."/storage/".$gallery->photo)){
-					unlink(public_path()."/storage/".$gallery->photo);
-				}
-			}
-			$unique = rand(9999, 0000);
-			$photo_name = $request->file('photo')->getClientOriginalName();
-			$photo_save_path = $request->file('photo')->storeAs('image', $unique.$photo_name, 'public');
-		}else{
-			foreach(Gallery::where('id', $id)->get() AS $gallery){
-				$photo_save_path = $gallery->photo;
-			}
-		}
 		Gallery::find($id)->update([
 			'title' => $request->title,
 			"category" => $request->category,
-			'photo' => $photo_save_path,
+			'photo' => image_update_function($request, Gallery::find($id)->get(), 'photo'),
 		]);
 		return back()->with("alert", "gallery update done....");
     }
@@ -81,11 +67,7 @@ class GalleryController extends Controller
 		]);*/
 	}
 	public function remove_function($id){
-		foreach(Gallery::where('id', $id)->get() AS $gallery){
-			if(file_exists(public_path()."/storage/".$gallery->photo)){
-				unlink(public_path()."/storage/".$gallery->photo);
-			}
-		}
+		image_delete_function(Category::where('id', $id)->get(), 'photo');
 		Gallery::find($id)->forceDelete();
 		return redirect('dashboard/gallery/loop')->with('success', 'gallery delete success');
     }

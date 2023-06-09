@@ -8,12 +8,14 @@ use Carbon\Carbon;
 use App\Models\Category;
 use IIlluminate\Support\Facades\Storage;
 use auth;
+use Image;
 
 class CategoryController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+		$this->middleware('rolecheck');
     }
 	public function index(){
 		return view('starlight/index');
@@ -30,12 +32,10 @@ class CategoryController extends Controller
 					'icon' => 'file|mimes:jpg,bmp,png'
 				],
 			);
-			$icon_name = $request->file('icon')->getClientOriginalName();
-			$icon_save_path = $request->file('icon')->storeAs('image', $icon_name, 'public');
 			Category::insert([
 				"name" => $request->name,
 				"title" => $request->title,
-				"icon" => $icon_save_path,
+				"icon" => image_insert_function($request, 'icon'),
 				"created_at" => Carbon::now()
 			]);
 			return redirect('dashboard/category/loop')->with('success', 'category add success');
@@ -54,19 +54,10 @@ class CategoryController extends Controller
 		]);
     }
 	public function update_function(Request $request, $id){
-		if($request->file('icon') != null){
-			foreach(Category::where('id', $id)->get() AS $category){
-				if(file_exists(public_path()."/storage/".$category->icon)){
-					unlink(public_path()."/storage/".$category->icon);
-				}
-			}
-		}
-		$icon_name = $request->file('icon')->getClientOriginalName();
-		$icon_save_path = $request->file('icon')->storeAs('image', $icon_name, 'public');
 		Category::find($id)->update([
 			'name' => $request->name,
 			'title' => $request->title,
-			'icon' => $icon_save_path,
+			'icon' => image_update_function($request, Category::find($id)->get(), 'icon'),
 		]);
 		return back()->with("alert", "category update done....");
     }
@@ -77,11 +68,7 @@ class CategoryController extends Controller
 		]);*/
 	}
 	public function remove_function($id){
-		foreach(Category::where('id', $id)->get() AS $category){
-			if(file_exists(public_path()."/storage/".$category->icon)){
-				unlink(public_path()."/storage/".$category->icon);
-			}
-		}
+		image_delete_function(Category::where('id', $id)->get(), 'icon');
 		Category::find($id)->forceDelete();
 		return redirect('dashboard/category/loop')->with('success', 'category delete success');
     }

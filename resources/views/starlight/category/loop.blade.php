@@ -31,7 +31,7 @@
 <tr>
   <td>{{$category_value->name}}</td>
   <td>{{$category_value->title}}</td>
-  <td><img src="{{ asset('/storage/'.$category_value->icon) }}" style="width:20px;"/></td>
+  <td><img src="{{ asset('/klift/uploads/'.$category_value->icon) }}" style="width:20px;"/></td>
   <td>
 	<a href="{{ url('dashboard/category/edit/page/'.$category_value->id) }}">Edit</a>
 	<a href="{{ url('dashboard/category/remove/'.$category_value->id) }}" onclick="confirm()">Delete</a>

@@ -31,7 +31,7 @@
 <tr>
   <td>{{$slider_value->name}}</td>
   <td>{{$slider_value->title}}</td>
-  <td><img src="{{ asset('/storage/'.$slider_value->icon) }}" style="width:20px;"/></td>
+  <td><img src="{{ asset('/klift/uploads/'.$slider_value->icon) }}" style="width:20px;"/></td>
   <td>
 	<a href="{{ url('dashboard/slider/edit/page/'.$slider_value->id) }}">Edit</a>
 	<a href="{{ url('dashboard/slider/remove/'.$slider_value->id) }}" onclick="confirm()">Delete</a>

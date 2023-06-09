@@ -14,7 +14,7 @@
           </div>
           <div class="col-md">
             <div class="ftco-footer-widget mb-4 ml-md-4">
-			  <img src="{{ asset('/storage/'.APP\Models\Settings::find(1)->icon) }}" style="width:250px;"/>
+			  <img src="{{ asset('/klift/uploads/'.APP\Models\Settings::find(1)->icon) }}" style="width:250px;"/>
             </div>
           </div>
           <div class="col-md">

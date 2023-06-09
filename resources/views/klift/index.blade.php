@@ -1,17 +1,17 @@
 @extends('klift/app')
 @section('content')
-<section class="home-slider js-fullheight owl-carousel">
+<section class="home-slider owl-carousel d-sm-none d-md-block">
 @foreach($slider as $slider_key => $slider_value)
-  <div class="slider-item js-fullheight" style="background-image:url('{{ asset('/storage/'.$slider_value->icon) }}');">
+  <div class="slider-item js-fullheight" style="background-image:url('{{ asset('/klift/uploads/'.$slider_value->icon) }}');">
     <div class="overlay"></div>
     <div class="container">
-      <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
-      <div class="col-md-7 text ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $slider_value->name }}</h1>
-        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $slider_value->title }}</p>
-        <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3 d-none">View our works</a></p>
-      </div>
-    </div>
+		<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
+		  <div class="col-md-7 text ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+			<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $slider_value->name }}</h1>
+			<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{ $slider_value->title }}</p>
+			<p><a href="#" class="btn btn-white btn-outline-white px-4 py-3 mt-3 d-none">View our works</a></p>
+		  </div>
+		</div>
     </div>
   </div>
 @endforeach 
@@ -62,7 +62,7 @@
 <section class="ftco-section ftc-no-pb">
   <div class="container">
     <div class="row no-gutters">
-      <div class="col-md-5 p-md-5 img img-2" style="background-image: url('{{ asset('/storage/'.$about_value->icon) }}');">
+      <div class="col-md-5 p-md-5 img img-2" style="background-image: url('{{ asset('/klift/uploads/'.$about_value->icon) }}');">
       </div>
       <div class="col-md-7 wrap-about pb-md-5 ftco-animate">
         <div class="heading-section mb-5 pl-md-5 heading-section-with-line">
@@ -85,7 +85,7 @@
   <div class="">
     <div class="row">
       <div class="col-md-12">
-		<img src="{{ asset('/storage/'.APP\Models\Settings::find(1)->add_one) }}" style="width:100%;"/>
+		<img src="{{ asset('/klift/uploads/'.APP\Models\Settings::find(1)->add_one) }}" style="width:100%;"/>
 	  </div>
 	</div>
   </div>
@@ -150,11 +150,11 @@
 	@foreach($category as $category_key => $category_value)    
 	  <div class="col-md-6 col-lg-3 ftco-animate">
         <div class="project">
-          <img src="{{ asset('/storage/'.$category_value->icon) }}" class="img-fluid" alt="Colorlib Template">
+          <img src="{{ asset('/klift/uploads/'.$category_value->icon) }}" class="img-fluid" alt="Colorlib Template">
           <div class="text">
             <h3>{{ $category_value->title }}</h3>
           </div>
-          <a href="{{ asset('/storage/'.$category_value->icon) }}" class="icon image-popup d-flex justify-content-center align-items-center">
+          <a href="{{ asset('/klift/uploads/'.$category_value->icon) }}" class="icon image-popup d-flex justify-content-center align-items-center">
             <span class=""><small style="">Open</small></span>
           </a>
         </div>
@@ -171,7 +171,7 @@
   <div class="">
     <div class="row">
       <div class="col-md-12">
-		<img src="{{ asset('/storage/'.APP\Models\Settings::find(1)->add_two) }}" style="width:100%;"/>
+		<img src="{{ asset('/klift/uploads/'.APP\Models\Settings::find(1)->add_two) }}" style="width:100%;"/>
 	  </div>
 	</div>
   </div>
@@ -191,7 +191,7 @@
 		  @foreach($customer as $customer_key => $customer_value)
           <div class="item">
             <div class="testimony-wrap p-4 pb-5">
-              <div class="user-img mb-5" style="background-image: url({{ asset('/storage/'.$customer_value->photo) }})">
+              <div class="user-img mb-5" style="background-image: url({{ asset('/klift/uploads/'.$customer_value->photo) }})">
                 <span class="quote d-flex align-items-center justify-content-center">
                   <i class="icon-quote-left"></i>
                 </span>
@@ -374,7 +374,7 @@
   <div class="">
     <div class="row">
       <div class="col-md-12">
-		<img src="{{ asset('/storage/'.APP\Models\Settings::find(1)->add_three) }}" style="width:100%;"/>
+		<img src="{{ asset('/klift/uploads/'.APP\Models\Settings::find(1)->add_three) }}" style="width:100%;"/>
 	  </div>
 	</div>
   </div>
